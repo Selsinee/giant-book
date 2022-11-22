@@ -15,36 +15,20 @@ class PublisherSeeder extends Seeder
      */
     public function run()
     {
+
+        DB::table('publishers')->insert(array_map(function() {
+            return $this->getData();
+        }, array_fill(0, 5, null)));
+    }
+
+    private function getData() {
         $faker = Factory::create();
-        DB::table('publishers')->insert([
-            [
+        return [
                 "name" => $faker->company(),
                 "address" => $faker->address(),
                 "phone" => $faker->phoneNumber(),
                 "email" => $faker->companyEmail(),
                 "image" => $faker->imageUrl()
-            ],
-            [
-                "name" => $faker->company(),
-                "address" => $faker->address(),
-                "phone" => $faker->phoneNumber(),
-                "email" => $faker->companyEmail(),
-                "image" => $faker->imageUrl()
-            ],
-            [
-                "name" => $faker->company(),
-                "address" => $faker->address(),
-                "phone" => $faker->phoneNumber(),
-                "email" => $faker->companyEmail(),
-                "image" => $faker->imageUrl()
-            ],
-            [
-                "name" => $faker->company(),
-                "address" => $faker->address(),
-                "phone" => $faker->phoneNumber(),
-                "email" => $faker->companyEmail(),
-                "image" => $faker->imageUrl()
-            ]
-        ]);
+        ];
     }
 }

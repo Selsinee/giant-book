@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class BookCategorySeeder extends Seeder
 {
+
     /**
      * Run the database seeds.
      *
@@ -14,63 +15,16 @@ class BookCategorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('book_category')->insert([
-            [
-                "book_id"=>rand(1, 11),
-                "category_id"=>rand(1, 5)
-            ],
-            [
-                "book_id"=>rand(1, 11),
-                "category_id"=>rand(1, 5)
-            ],
-            [
-                "book_id"=>rand(1, 11),
-                "category_id"=>rand(1, 5)
-            ],
-            [
-                "book_id"=>rand(1, 11),
-                "category_id"=>rand(1, 5)
-            ],
-            [
-                "book_id"=>rand(1, 11),
-                "category_id"=>rand(1, 5)
-            ],
-            [
-                "book_id"=>rand(1, 11),
-                "category_id"=>rand(1, 5)
-            ],
-            [
-                "book_id"=>rand(1, 11),
-                "category_id"=>rand(1, 5)
-            ],
-            [
-                "book_id"=>rand(1, 11),
-                "category_id"=>rand(1, 5)
-            ],
-            [
-                "book_id"=>rand(1, 11),
-                "category_id"=>rand(1, 5)
-            ],
-            [
-                "book_id"=>rand(1, 11),
-                "category_id"=>rand(1, 5)
-            ],
-            [
-                "book_id"=>rand(1, 11),
-                "category_id"=>rand(1, 5)
-            ],
-            [
-                "book_id"=>rand(1, 11),
-                "category_id"=>rand(1, 5)
-            ],
-            [
-                "book_id"=>rand(1, 11),
-                "category_id"=>rand(1, 5)
-            ],
-            [
-                "book_id"=>rand(1, 11),
-                "category_id"=>rand(1, 5)
-            ]
-            ]);
+        DB::table('book_category')->insert(array_map(function() {
+            return $this->getData();
+        }, array_fill(0, 10, null)));
     }
+
+    private function getData() {
+        return [
+            "book_id"=>rand(1, 11),
+            "category_id"=>rand(1, 5)
+        ];
+    }
+
 }
